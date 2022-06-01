@@ -1,0 +1,68 @@
+{
+  "name": "vscode-continue-inline-comments",
+  "version": "1.0.0",
+  "description": "Visual Studio Code extension to automatically continue inline comments.",
+  "license": "Unlicense",
+  "author": "Val (https://val.codejam.info)",
+  "main": "index.js",
+  "repository": "valeriangalliat/vscode-continue-inline-comments",
+  "scripts": {
+    "lint": "standard"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^5.0.0"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "publisher": "val",
+  "displayName": "Continue Inline Comments",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Continue Inline Comments",
+      "properties": {
+        "continueInlineComment.list": {
+          "type": "array",
+          "default": [
+            {
+              "comment": "//",
+              "languages": [
+                "php",
+                "javascript",
+                "typescript",
+                "jsonc",
+                "scss",
+                "sass",
+                "json",
+                "vue",
+                "markdown",
+                "javascriptreact",
+                "typescriptreact"
+              ]
+            },
+            {
+              "comment": "#",
+              "languages": [
+                "python",
+                "ruby",
+                "shellscript",
+                "makefile"
+              ]
+            }
+          ],
+          "uniqueItems": true,
+          "description": "Single Line Comments Patterns"
+        }
+      }
+    }
+  }
+}
