@@ -1,16 +1,31 @@
 {
   "name": "vscode-continue-inline-comments",
-  "version": "1.0.1",
-  "description": "Visual Studio Code extension to automatically continue inline comments.",
+  "version": "1.1.0",
+  "description": "Visual Studio Code extension to automatically continue inline comments. 💬",
   "license": "Unlicense",
   "author": "Val (https://val.codejam.info)",
-  "main": "index.js",
-  "repository": "valeriangalliat/vscode-continue-inline-comments",
+  "main": "dist/extension.js",
+  "repository": "github:valeriangalliat/vscode-continue-inline-comments",
   "scripts": {
-    "lint": "standard"
+    "build": "npm run build-base -- --sourcemap",
+    "build-base": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --external:jsonc-parser --format=cjs --platform=node",
+    "lint": "ts-standard",
+    "package": "vsce package",
+    "type-check": "tsc -noEmit",
+    "vscode:prepublish": "npm run build-base -- --minify",
+    "watch": "npm run build -- --watch"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "^17.0.0"
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node": "^17.0.38",
+    "@types/vscode": "^1.53.0",
+    "esbuild": "^0.14.42",
+    "escape-string-regexp": "^5.0.0",
+    "ts-standard": "^11.0.0",
+    "typescript": "^4.7.2"
   },
   "engines": {
     "vscode": "^1.53.0"
@@ -27,7 +42,7 @@
     "configuration": {
       "title": "Continue Inline Comments",
       "properties": {
-        "continueInlineComment.list": {
+        "continueInlineComments.list": {
           "type": "array",
           "default": [
             {

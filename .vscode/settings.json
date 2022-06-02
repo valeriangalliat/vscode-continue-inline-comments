@@ -1,3 +1,18 @@
 {
-  "standard.autoFixOnSave": true
+  // Disable the Prettier extension if it's installed
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "[javascript]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false
+  },
+
+  // Enable Standard extension if it's not enabled by default
+  "standard.enable": true,
+  "standard.autoFixOnSave": true,
+  "standard.engine": "ts-standard"
 }
