@@ -8,7 +8,7 @@
 
 Visual Studio Code [doesn't support automatic continuation of inline comments](https://github.com/Microsoft/vscode/issues/26694)
 out of the box. This extension adds support for it in various languages (see
-[default config](#defaults)).
+[default config](#configuration)).
 
 Inspired by [Auto Comment Next Line](https://marketplace.visualstudio.com/items?itemName=ctf0.auto-comment-next-line)
 ([GitHub](https://github.com/ctf0/vscode-auto-comment-next-line)) which wasn't
@@ -60,7 +60,7 @@ See the full code in [`src/extension.ts`](src/extension.ts).
 
 When a new document is opened or when the language of a document changes
 (`vscode.workspace.onDidOpenTextDocument`), we check if the language is
-supported by our [config](#defaults). If so, we use
+supported by our [config](#configuration). If so, we use
 `vscode.languages.setLanguageConfiguration` to extend the `onEnterRules` to add
 completion for the inline comments (see [hacks](#hacks) below).
 
@@ -84,7 +84,7 @@ is loaded would not trigger `onDidOpenTextDocument`.
   ([see](https://github.com/microsoft/vscode/issues/109919) and
   [see](https://github.com/microsoft/vscode/issues/2871)), so we have to resort
   to a dirty hack where we manually *identify the language configuration files*
-  of the installed extensions*, *load that file manually* with [jsonc-parser](https://www.npmjs.com/package/jsonc-parser),
+  of the installed extensions, *load that file manually* with [jsonc-parser](https://www.npmjs.com/package/jsonc-parser),
   and *translate the JSON representation of `onEnterRules`* (which
   is different from the JavaScript representation expected by the extensions
   API) so that we can use it in `vscode.languages.setLanguageConfiguration`.
