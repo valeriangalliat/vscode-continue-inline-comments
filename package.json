@@ -48,6 +48,7 @@
             {
               "comment": "//",
               "languages": [
+                "go",
                 "php",
                 "javascript",
                 "typescript",
