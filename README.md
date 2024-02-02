@@ -118,5 +118,6 @@ See [publishing extensions](https://code.visualstudio.com/api/working-with-exten
 ```sh
 npm install -g vsce
 vsce package
-vsce publish
 ```
+
+Then update manually from the Marketplace.
